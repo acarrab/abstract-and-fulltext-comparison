@@ -14,13 +14,13 @@ datafile=$(readlink -f $1)
 tmp=$(readlink -f ./tmp/$2)
 exe mkdir $tmp
 
-base_autophrase=$(readlink -f "./src/BASE_AutoPhrase")
+base_autophrase=$(readlink -f "./src/AutoPhrase")
+cp src/my_auto_phrase.sh src/my_phrasal_segmentation.sh $base_autophrase
 
 exe cp -r $base_autophrase/* $tmp
 
-autophrasedir="$tmp"
-exe pushd $autophrasedir
+exe pushd $tmp
 
-exe ./auto_phrase.sh $datafile $4 $3
+exe ./my_auto_phrase.sh $datafile $4 $3
 
 exe popd
