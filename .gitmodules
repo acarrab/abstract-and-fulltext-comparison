@@ -1,3 +1,6 @@
 [submodule "src/fasttext"]
 	path = src/fasttext
 	url = https://github.com/facebookresearch/fastText.git
+[submodule "src/AutoPhrase"]
+	path = src/AutoPhrase
+	url = git@github.com:shangjingbo1226/AutoPhrase.git
