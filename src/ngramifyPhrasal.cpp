@@ -3,7 +3,29 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cmath>
+
 using namespace std;
+
+class Progress {
+  int total, decimalShift, lastValue;
+  inline int valueOf(int progress) {
+    return progress * decimalShift / total;
+  }
+
+public:
+  Progress(int totalThings, int decimalPlaces) :
+    total(totalThings), decimalShift(pow(10, decimalPlaces))
+  {}
+  inline void updateProgress(int progress) {
+    if (lastValue != valueOf(progress)) {
+      lastValue = valueOf(progress);
+      fprintf(stderr, "\r%d.%d%%", lastValue / decimalShift, lastValue % decimalShift);
+    }
+  }
+}
+
+
 
 int main(int argc, char *argv[]) {
   string doc;
